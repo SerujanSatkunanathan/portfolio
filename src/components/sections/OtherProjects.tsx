@@ -16,6 +16,7 @@ export function OtherProjects() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <SectionHeading
+          number="05."
           title="Other Projects"
           subtitle="Experiments and side projects"
         />
@@ -26,7 +27,7 @@ export function OtherProjects() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.3 }}
-                className="glass-card rounded-2xl p-7 h-full gradient-border group"
+                className="glass-card rounded-2xl p-7 h-full gradient-border group corner-brackets"
               >
                 <div className="flex items-center justify-between mb-5">
                   <div className="w-12 h-12 rounded-xl glass flex items-center justify-center group-hover:border-accent/30 transition-all duration-300">

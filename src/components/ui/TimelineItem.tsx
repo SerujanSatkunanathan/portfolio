@@ -8,28 +8,36 @@ import { motion } from "framer-motion";
 interface TimelineItemProps {
   experience: ExperienceType;
   index: number;
+  stepNumber?: string;
 }
 
-export function TimelineItem({ experience, index }: TimelineItemProps) {
+export function TimelineItem({ experience, index, stepNumber }: TimelineItemProps) {
   return (
     <AnimatedSection delay={index * 0.15}>
       <div className="relative pl-10 md:pl-14 pb-14 last:pb-0 group">
-        {/* Timeline line */}
+        {/* Timeline line with gradient glow */}
         <div className="absolute left-[7px] top-3 bottom-0 w-px bg-gradient-to-b from-accent/40 via-border to-transparent" />
+        <div className="absolute left-[5px] top-3 bottom-0 w-[3px] bg-gradient-to-b from-accent/10 via-transparent to-transparent blur-sm" />
 
-        {/* Timeline dot */}
+        {/* Timeline dot with step number */}
         <div className="absolute left-0 top-2">
           <div className="w-[15px] h-[15px] rounded-full bg-background border-2 border-accent flex items-center justify-center">
             <div className="w-[5px] h-[5px] rounded-full bg-accent" />
           </div>
           <div className="absolute inset-0 rounded-full bg-accent/20 blur-md" />
+          {/* Step number */}
+          {stepNumber && (
+            <span className="absolute -left-1 -top-6 font-mono text-[10px] text-accent/60 tracking-wider">
+              {stepNumber}
+            </span>
+          )}
         </div>
 
         {/* Content card */}
         <motion.div
           whileHover={{ y: -2 }}
           transition={{ duration: 0.3 }}
-          className="glass-card rounded-2xl p-6 md:p-8 gradient-border"
+          className="glass-card rounded-2xl p-6 md:p-8 gradient-border corner-brackets"
         >
           <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-5 gap-2">
             <div>

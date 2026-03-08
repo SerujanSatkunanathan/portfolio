@@ -10,6 +10,8 @@ import {
   FiGithub,
   FiLinkedin,
   FiSend,
+  FiCopy,
+  FiCheck,
 } from "react-icons/fi";
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
@@ -20,18 +22,21 @@ const contactInfo = [
     label: "Email",
     value: SITE_CONFIG.email,
     href: `mailto:${SITE_CONFIG.email}`,
+    copyable: true,
   },
   {
     icon: FiPhone,
     label: "Phone",
     value: SITE_CONFIG.phone,
     href: `tel:${SITE_CONFIG.phone}`,
+    copyable: false,
   },
   {
     icon: FiMapPin,
     label: "Location",
     value: SITE_CONFIG.location,
     href: undefined,
+    copyable: false,
   },
 ];
 
@@ -47,6 +52,7 @@ export function Contact() {
     email: "",
     message: "",
   });
+  const [copied, setCopied] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -57,14 +63,21 @@ export function Contact() {
     );
   };
 
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText(SITE_CONFIG.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section id="contact" className="py-28 relative">
       <div className="absolute top-0 left-0 right-0 section-divider" />
-      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-gradient-start/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-end/5 rounded-full blur-[100px]" />
+      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-gradient-start/5 rounded-full blur-[120px] animate-drift" />
+      <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-end/5 rounded-full blur-[100px] animate-drift-slow" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <SectionHeading
+          number="07."
           title="Get In Touch"
           subtitle="Have a project in mind? Let's build something great together."
         />
@@ -82,25 +95,38 @@ export function Contact() {
                 const Icon = item.icon;
                 const Wrapper = item.href ? "a" : "div";
                 return (
-                  <Wrapper
-                    key={item.label}
-                    {...(item.href
-                      ? { href: item.href }
-                      : {})}
-                    className="flex items-center gap-4 group"
-                  >
-                    <div className="w-12 h-12 rounded-2xl glass flex items-center justify-center group-hover:border-accent/30 transition-all duration-300">
-                      <Icon className="w-5 h-5 text-foreground-subtle group-hover:text-accent transition-colors duration-300" />
-                    </div>
-                    <div>
-                      <div className="text-xs text-foreground-subtle uppercase tracking-wider">
-                        {item.label}
+                  <div key={item.label} className="flex items-center gap-4 group">
+                    <Wrapper
+                      {...(item.href ? { href: item.href } : {})}
+                      className="flex items-center gap-4 flex-1"
+                    >
+                      <div className="w-12 h-12 rounded-2xl glass flex items-center justify-center group-hover:border-accent/30 transition-all duration-300 social-glow">
+                        <Icon className="w-5 h-5 text-foreground-subtle group-hover:text-accent transition-colors duration-300" />
                       </div>
-                      <div className="text-foreground text-sm font-medium mt-0.5">
-                        {item.value}
+                      <div>
+                        <div className="text-xs text-foreground-subtle uppercase tracking-wider">
+                          {item.label}
+                        </div>
+                        <div className="text-foreground text-sm font-medium mt-0.5">
+                          {item.value}
+                        </div>
                       </div>
-                    </div>
-                  </Wrapper>
+                    </Wrapper>
+                    {/* Copy button for email */}
+                    {item.copyable && (
+                      <button
+                        onClick={copyEmail}
+                        className="p-2 rounded-lg glass hover:border-accent/30 transition-all duration-300 group/copy"
+                        title="Copy email"
+                      >
+                        {copied ? (
+                          <FiCheck className="w-4 h-4 text-green-400" />
+                        ) : (
+                          <FiCopy className="w-4 h-4 text-foreground-subtle group-hover/copy:text-accent transition-colors" />
+                        )}
+                      </button>
+                    )}
+                  </div>
                 );
               })}
             </div>
@@ -120,7 +146,7 @@ export function Contact() {
                         : undefined
                     }
                     whileHover={{ y: -3 }}
-                    className="w-12 h-12 rounded-2xl glass flex items-center justify-center hover:border-accent/30 transition-all duration-300 group"
+                    className="w-12 h-12 rounded-2xl glass flex items-center justify-center transition-all duration-300 group social-glow"
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5 text-foreground-subtle group-hover:text-accent transition-colors duration-300" />
@@ -134,7 +160,7 @@ export function Contact() {
           <AnimatedSection delay={0.2} className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="glass-card rounded-3xl p-8 md:p-10 space-y-6 gradient-border"
+              className="glass-card rounded-3xl p-8 md:p-10 space-y-6 gradient-border corner-brackets"
             >
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>

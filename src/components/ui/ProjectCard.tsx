@@ -20,6 +20,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         transition={{ duration: 0.3, ease: "easeOut" }}
         className="group relative rounded-3xl overflow-hidden h-full glass-card gradient-border"
       >
+        {/* Corner brackets overlay */}
+        <div className="corner-brackets-inner absolute inset-0 rounded-3xl z-20 pointer-events-none" />
+
         {/* Decorative header */}
         <div
           className={`relative h-52 bg-gradient-to-br ${project.gradient} overflow-hidden`}
@@ -51,6 +54,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </span>
             </div>
           )}
+
+          {/* Project ID label */}
+          <div className="absolute top-4 left-4">
+            <span className="font-mono text-[10px] text-foreground-subtle/60 uppercase tracking-widest">
+              {project.id}
+            </span>
+          </div>
         </div>
 
         {/* Content */}
@@ -75,17 +85,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             )}
           </div>
 
-          {/* Links */}
+          {/* Links — pill-styled */}
           <div className="flex flex-wrap gap-3 pt-4 border-t border-border">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-foreground-subtle hover:text-accent transition-colors duration-300"
+                className="flex items-center gap-2 text-sm px-4 py-1.5 rounded-full glass text-foreground-subtle hover:text-accent hover:border-accent/30 transition-all duration-300"
               >
-                <FiGithub className="w-4 h-4" />
-                Source
+                <FiGithub className="w-3.5 h-3.5" />
+                Code
               </a>
             )}
             {project.demo && (
@@ -93,9 +103,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-foreground-subtle hover:text-accent transition-colors duration-300"
+                className="flex items-center gap-2 text-sm px-4 py-1.5 rounded-full glass text-foreground-subtle hover:text-accent hover:border-accent/30 transition-all duration-300"
               >
-                <FiExternalLink className="w-4 h-4" />
+                <FiExternalLink className="w-3.5 h-3.5" />
                 Live Demo
               </a>
             )}
@@ -104,9 +114,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.playStore}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-foreground-subtle hover:text-accent transition-colors duration-300"
+                className="flex items-center gap-2 text-sm px-4 py-1.5 rounded-full glass text-foreground-subtle hover:text-accent hover:border-accent/30 transition-all duration-300"
               >
-                <SiGoogleplay className="w-3.5 h-3.5" />
+                <SiGoogleplay className="w-3 h-3" />
                 Play Store
               </a>
             )}
@@ -115,9 +125,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.appStore}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-foreground-subtle hover:text-accent transition-colors duration-300"
+                className="flex items-center gap-2 text-sm px-4 py-1.5 rounded-full glass text-foreground-subtle hover:text-accent hover:border-accent/30 transition-all duration-300"
               >
-                <SiAppstore className="w-3.5 h-3.5" />
+                <SiAppstore className="w-3 h-3" />
                 App Store
               </a>
             )}
