@@ -35,17 +35,17 @@ export function About() {
             <div className="absolute -inset-1 bg-gradient-to-br from-gradient-start/20 via-transparent to-gradient-end/20 rounded-[2rem] blur-2xl opacity-50" />
 
             {/* Main Glass Panel */}
-            <div className="relative glass-card rounded-[2rem] p-8 md:p-12 overflow-hidden corner-brackets">
+            <div className="relative glass-card rounded-[2rem] p-6 md:p-8 lg:p-12 overflow-hidden corner-brackets">
               <div className="grid-pattern absolute inset-0 rounded-[2rem] opacity-[0.15]" />
 
               {/* Header inside Panel */}
-              <div className="relative flex flex-col md:flex-row items-center justify-between mb-12 gap-6 text-center md:text-left">
+              <div className="relative flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12 gap-5 md:gap-6 text-center md:text-left">
                 {/* Title */}
                 <div>
                   <span className="font-mono text-sm text-accent tracking-wider mb-2 block">
                     01.
                   </span>
-                  <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-tight">
                     Who Am I <span className="text-accent">?</span>
                   </h2>
                 </div>
@@ -64,14 +64,14 @@ export function About() {
               </div>
 
               {/* Interactive Tabs */}
-              <div className="relative flex flex-wrap items-center justify-center gap-3 mb-10">
+              <div className="relative flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-8 md:mb-10">
                 {tabs.map((tab) => {
                   const isActive = activeTab === tab.id;
                   return (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`relative px-6 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 ${
+                      className={`relative px-4 py-2 md:px-6 md:py-2.5 rounded-xl font-medium text-xs md:text-sm transition-all duration-300 ${
                         isActive
                           ? "text-white"
                           : "text-foreground-subtle hover:text-foreground"
@@ -110,10 +110,10 @@ export function About() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className="relative pl-6"
+                      className="relative pl-5 md:pl-6"
                     >
                       <div className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-full bg-gradient-to-b from-accent/50 to-transparent" />
-                      <div className="space-y-4 text-foreground-muted text-base lg:text-lg leading-relaxed font-light">
+                      <div className="space-y-4 text-foreground-muted text-sm sm:text-base lg:text-lg leading-relaxed font-light">
                         <p>
                           Hi, I&apos;m Serujan Satkunanathan, a{" "}
                           <span className="text-foreground font-semibold">
@@ -145,10 +145,10 @@ export function About() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className="relative pl-6"
+                      className="relative pl-5 md:pl-6"
                     >
                       <div className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-full bg-gradient-to-b from-accent/50 to-transparent" />
-                      <div className="space-y-4 text-foreground-muted text-base lg:text-lg leading-relaxed font-light">
+                      <div className="space-y-4 text-foreground-muted text-sm sm:text-base lg:text-lg leading-relaxed font-light">
                         <p>
                           My journey started with a fascination for mobile
                           development and creating intuitive user experiences.
@@ -180,16 +180,16 @@ export function About() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className="relative pl-6"
+                      className="relative pl-5 md:pl-6"
                     >
                       <div className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-full bg-gradient-to-b from-accent/50 to-transparent" />
-                      <div className="space-y-4 text-foreground-muted text-lg lg:text-xl leading-relaxed italic">
+                      <div className="space-y-4 text-foreground-muted text-base sm:text-lg lg:text-xl leading-relaxed italic">
                         <p>
                           &ldquo;I believe that the best apps aren&apos;t just
                           coded — they&apos;re crafted with intention, designed
                           for people, and built to last.&rdquo;
                         </p>
-                        <p className="not-italic text-base lg:text-lg font-light">
+                        <p className="not-italic text-sm sm:text-base lg:text-lg font-light">
                           I am driven by the intersection of clean, maintainable
                           code and meaningful impact. My ultimate goal is to
                           solve real-world problems through innovative technology
@@ -207,7 +207,7 @@ export function About() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.98 }}
                       transition={{ duration: 0.3 }}
-                      className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+                      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
                     >
                       {statsData.map((stat, i) => (
                         <div

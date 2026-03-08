@@ -67,7 +67,7 @@ export function Hero() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full lg:w-[45%] min-h-[50vh] lg:min-h-screen"
+          className="relative w-full lg:w-[45%] h-[40vh] md:min-h-[50vh] lg:h-auto lg:min-h-screen"
         >
           <Image
             src="/profile.png"
@@ -83,7 +83,7 @@ export function Hero() {
         </motion.div>
 
         {/* RIGHT: Content Card */}
-        <div className="relative w-full lg:w-[55%] flex items-center justify-center px-6 py-16 lg:py-0 lg:pt-24">
+        <div className="relative w-full lg:w-[55%] flex items-center justify-center px-4 md:px-6 py-12 lg:py-0 lg:pt-24 -mt-10 lg:mt-0 z-10">
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -91,7 +91,7 @@ export function Hero() {
             className="relative max-w-2xl w-full"
           >
             {/* Glassmorphism card */}
-            <div className="relative glass rounded-3xl p-8 md:p-12 overflow-hidden">
+            <div className="relative glass rounded-3xl p-6 md:p-8 lg:p-12 overflow-hidden">
               {/* Corner brackets */}
               <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-accent/50" />
               <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-accent/50" />
@@ -126,7 +126,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[0.95] mb-6"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-6"
               >
                 <span className="text-foreground/90">
                   {SITE_CONFIG.name.split(" ")[0]}
@@ -191,7 +191,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex items-center justify-center gap-4 mt-8"
+              className="flex items-center justify-center gap-3 md:gap-4 mt-6 md:mt-8 flex-wrap"
             >
               {socials.map((social) => {
                 const Icon = social.icon;
@@ -210,7 +210,7 @@ export function Hero() {
                     }
                     download={isDownload || undefined}
                     whileHover={{ y: -4, scale: 1.1 }}
-                    className="w-12 h-12 rounded-2xl glass flex items-center justify-center transition-all duration-300 group social-glow"
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-2xl glass flex items-center justify-center transition-all duration-300 group social-glow"
                     aria-label={social.label}
                     title={social.label}
                   >
